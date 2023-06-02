@@ -38,3 +38,9 @@ Who won in 1975?
 
 The Netherlands (with Ding-a-Dong) did and you can check at https://eurovisionworld.com/eurovision/1975, the data is correct.
 Please take a moment to note down the positions of Finland, Sweden and Ireland (7, 8, 9), this is going to be useful in a bit.
+
+    MATCH (c:Country)<-[vote:VOTE_2006_JURY|VOTE_2006_PUBLIC]-()
+    RETURN c.name, sum(vote.weight) as score
+    ORDER BY score DESC LIMIT 10;
+
+Finland (Hard Rock Hallelujah) did (https://eurovisionworld.com/eurovision/2006) … just in case you wondered what the music was about.
