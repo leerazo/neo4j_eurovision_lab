@@ -15,7 +15,7 @@ The native [LOAD CSV](https://neo4j.com/developer/guide-import-csv/) cypher comm
 
 3. Click on the "Import Database" tab in the instance management console.
 
-![](images/01-import_database.png) 
+![](images/02-import_database.png) 
 
 <!---
 ## A Day of Data
