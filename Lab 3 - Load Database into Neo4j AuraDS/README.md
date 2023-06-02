@@ -17,6 +17,23 @@ The native [LOAD CSV](https://neo4j.com/developer/guide-import-csv/) cypher comm
 
 ![](images/02-import_database.png) 
 
+4. Drag and drop the dump file you downloaded in Step 1 or click the "Browse" button and select it from the menu.
+
+![](images/03-upload_dump_file.png) 
+
+5. Confirm the upload on the confirmation pop-up window
+
+![](images/04-confirm_upload.png) 
+
+6. After the dump file has been uploaded it might take 2-5 minutes to process before the upload is complete. 
+
+![](images/04-upload_complete.png) 
+
+6. The instance and the data is ready to when the status goes back to "Running"
+
+![](images/04-instance_running.png) 
+
+
 <!---
 ## A Day of Data
 For this portion of the lab, we're going to work with a subset of the data.  Our full dataset is a year of data.  However, we'll just be playing around with a day's worth.  The data is [here](https://storage.googleapis.com/neo4j-datasets/form13/2022-02-17.csv).
