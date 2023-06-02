@@ -9,8 +9,11 @@ The native [LOAD CSV](https://neo4j.com/developer/guide-import-csv/) cypher comm
 
 1. Download the [database backup file](https://storage.cloud.google.com/gcp_eurovision_workshop/WorkshopGDS_EurovisionSongContest_Dump550.dump)
 
-2. Go to the (Neo4j AuraDB Managemnt Console)[https://console.neo4j.com]
+2. Go to the (Neo4j AuraDB Managemnt Console)[https://console.neo4j.io]
 
+3. 
+
+<!---
 ## A Day of Data
 For this portion of the lab, we're going to work with a subset of the data.  Our full dataset is a year of data.  However, we'll just be playing around with a day's worth.  The data is [here](https://storage.googleapis.com/neo4j-datasets/form13/2022-02-17.csv).
 
@@ -186,3 +189,5 @@ That should give this:
 ![](images/17-partof.png)
 
 You've done it!  We've loaded our data set up.  We'll explore it in the next lab.  But, feel free to poke around in the Neo4j Workspace a bit as well.
+
+-->
