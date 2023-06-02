@@ -63,7 +63,7 @@ The approach then becomes:
 - Use another intermediate projection to filter based on the percentage (80%)
 - Project the result ordered by relevance 
 
-Copu the following query:
+Let's give it a try:
 
     MATCH (target:Country)<-[r]-()
     WHERE NOT type(r) IN ['SPLIT_INTO','WAS_RENAMED’]
