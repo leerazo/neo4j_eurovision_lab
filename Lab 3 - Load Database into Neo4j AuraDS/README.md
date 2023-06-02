@@ -1,4 +1,4 @@
-# Lab 3 - Moving Data
+# Lab 3 - Loading Data into Neo4j
 There are many different ways to load data into Neo4j. In this lab, we're going to take a backup of a data from an Google Cloud Storage bucket and import it into Neo4j.  
 
 The Neo4j [Data Importer](https://data-importer.neo4j.io/) is another option.  It's a great graphical way to import data.  However, the LOAD CSV option we're using makes it really easy to pull directly from Cloud Storage, so is probably a better choice for what we need.
@@ -13,7 +13,9 @@ The native [LOAD CSV](https://neo4j.com/developer/guide-import-csv/) cypher comm
 
 ![](images/01-aura_console.png)
 
-3. 
+3. Click on the "Import Database" tab in the instance management console.
+
+![](images/01-import_database.png) 
 
 <!---
 ## A Day of Data
