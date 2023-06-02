@@ -61,7 +61,12 @@ The approach then becomes:
 - You keep that result with an intermediate projection (WITH) and filter out based on the number of entries (like more than 15)
 - You then determine how many times the other countries voted for that country 
 - Use another intermediate projection to filter based on the percentage (80%)
-- Project the result ordered by relevance
+- Project the result ordered by relevance 
+
+
+    MATCH (c:Country)<-[vote:VOTE_2006_JURY|VOTE_2006_PUBLIC]-()
+    RETURN c.name, sum(vote.weight) as score
+    ORDER BY score DESC LIMIT 10;
 
     MATCH (target:Country)<-[r]-()
     WHERE NOT type(r) IN ['SPLIT_INTO','WAS_RENAMED’]
