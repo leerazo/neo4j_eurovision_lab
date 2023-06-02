@@ -7,6 +7,18 @@ Make sure that "Query" is selected at the top.
 
 ![](images/01-workspace.png)
 
+So let's begin from the beginning!
+
+You can download the [cypher script for this exercise here](https://storage.googleapis.com/gcp_eurovision_workshop/WorkshopGDS_EurovisionSongContest_Script.cypher). 
+
+In Cypher you MATCH a pattern and then RETURN a result
+
+    MATCH (c:Country {name: "Finland"})
+    RETURN c;
+
+![](images/02-query1.png)
+
+
 We're going to run a Cypher statement to load the data.  Cypher is Neo4j's query language.  LOAD CSV is part of that and allows us to easily load CSV data.  Try copying this command into Neo4j Workspace.
 
     LOAD CSV WITH HEADERS FROM 'https://storage.googleapis.com/neo4j-datasets/form13/2022-02-17.csv' AS row
