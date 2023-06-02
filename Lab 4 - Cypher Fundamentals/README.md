@@ -39,8 +39,20 @@ Who won in 1975?
 The Netherlands (with Ding-a-Dong) did and you can check at https://eurovisionworld.com/eurovision/1975, the data is correct.
 Please take a moment to note down the positions of Finland, Sweden and Ireland (7, 8, 9), this is going to be useful in a bit.
 
+Who won in 2006?
+
     MATCH (c:Country)<-[vote:VOTE_2006_JURY|VOTE_2006_PUBLIC]-()
     RETURN c.name, sum(vote.weight) as score
     ORDER BY score DESC LIMIT 10;
 
 Finland (Hard Rock Hallelujah) did (https://eurovisionworld.com/eurovision/2006) … just in case you wondered what the music was about.
+
+#### Let's up the ante...
+Does country-X almost always give country-Y points?
+
+That clearly requires a couple of definitions:
+- almost always → at least 80% of the time
+- a minimum of 15 entries for country-Y (otherwise it's not really significant … sorry Australia)
+- in order to keep the complexity limited the splitting and renaming of countries is not taken into account (but you could if you wanted to)
+- only jury votes are considered
+- …
