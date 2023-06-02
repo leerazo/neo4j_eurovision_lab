@@ -7,9 +7,9 @@ The native [LOAD CSV](https://neo4j.com/developer/guide-import-csv/) cypher comm
 
 ## Retreiving the backup file and loading it into Neo4j
 
-1. Download the [database backup file](https://storage.cloud.google.com/gcp_eurovision_workshop/WorkshopGDS_EurovisionSongContest_Dump550.dump)
+1. Download the [database backup file from here](https://storage.cloud.google.com/gcp_eurovision_workshop/WorkshopGDS_EurovisionSongContest_Dump550.dump)
 
-2. Go to the [Neo4j AuraDB Managemnt Console](https://console.neo4j.io)
+2. Go to the [Neo4j AuraDB Managemnt Console](https://console.neo4j.io) and click on the name of the instance you created earlier.
 
 ![](images/01-aura_console.png)
 
