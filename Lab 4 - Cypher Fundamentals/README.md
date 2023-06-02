@@ -55,4 +55,29 @@ That clearly requires a couple of definitions:
 - a minimum of 15 entries for country-Y (otherwise it's not really significant … sorry Australia)
 - in order to keep the complexity limited the splitting and renaming of countries is not taken into account (but you could if you wanted to)
 - only jury votes are considered
-- …
+
+The approach then becomes:
+- First you determine how many times a country competed.
+- You keep that result with an intermediate projection (WITH) and filter out based on the number of entries (like more than 15)
+- You then determine how many times the other countries voted for that country 
+- Use another intermediate projection to filter based on the percentage (80%)
+- Project the result ordered by relevance
+
+    MATCH (target:Country)<-[r]-()
+    WHERE NOT type(r) IN ['SPLIT_INTO','WAS_RENAMED’]
+      AND NOT type(r) CONTAINS 'PUBLIC'
+    WITH target, count(DISTINCT type(r)) AS totalentries
+    WHERE totalentries > 15
+    MATCH (target)<-[r]-(source:Country)
+    WHERE NOT type(r) IN ['SPLIT_INTO','WAS_RENAMED’]
+      AND NOT type(r) CONTAINS 'PUBLIC'
+    WITH target, source, count(r) as votes, totalentries
+    WHERE votes > totalentries * 0.80
+    RETURN source.name AS `country-X`, target.name as `country-Y`, votes, totalentries, toFloat(votes)/toFloat(totalentries) as percentage ORDER BY totalentries+votes DESC;
+
+Does country-X almost always give country-Y points?
+- It does happen
+- But it's not as common as some of the myths would have you believe.
+
+But why does Switzerland usually vote for Italy? 
+![](images/04-switzerland_italy.png)
