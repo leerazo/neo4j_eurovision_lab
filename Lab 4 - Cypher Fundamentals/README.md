@@ -65,18 +65,14 @@ The approach then becomes:
 
 Copu the following query:
 
-    MATCH (c:Country)<-[vote:VOTE_2006_JURY|VOTE_2006_PUBLIC]-()
-    RETURN c.name, sum(vote.weight) as score
-    ORDER BY score DESC LIMIT 10;
-
     MATCH (target:Country)<-[r]-()
     WHERE NOT type(r) IN ['SPLIT_INTO','WAS_RENAMED’]
-    AND NOT type(r) CONTAINS 'PUBLIC'
+      AND NOT type(r) CONTAINS 'PUBLIC'
     WITH target, count(DISTINCT type(r)) AS totalentries
     WHERE totalentries > 15
     MATCH (target)<-[r]-(source:Country)
     WHERE NOT type(r) IN ['SPLIT_INTO','WAS_RENAMED’]
-    AND NOT type(r) CONTAINS 'PUBLIC'
+      AND NOT type(r) CONTAINS 'PUBLIC'
     WITH target, source, count(r) as votes, totalentries
     WHERE votes > totalentries * 0.80
     RETURN source.name AS `country-X`, target.name as `country-Y`, votes, totalentries, toFloat(votes)/toFloat(totalentries) as percentage ORDER BY totalentries+votes DESC;
