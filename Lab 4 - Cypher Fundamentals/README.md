@@ -16,7 +16,7 @@ In Cypher you MATCH a pattern and then RETURN a result
     MATCH (c:Country {name: "Finland"})
     RETURN c;
 
-![](images/02-query1.png)
+![](images/02-query1_show_finland.png)
 
 
 We're going to run a Cypher statement to load the data.  Cypher is Neo4j's query language.  LOAD CSV is part of that and allows us to easily load CSV data.  Try copying this command into Neo4j Workspace.
