@@ -83,3 +83,18 @@ Does country-X almost always give country-Y points?
 
 But why does Switzerland usually vote for Italy? 
 ![](images/04-Switzerland_Italy.png)
+
+Are there blocks of countries (cliques/cohorts … whatever you want to call them) that keep votes amongst themselves?
+
+This is much harder to determine
+- It requires reciprocity (it's not good enough that X always votes for Y, it has to go the other way too)
+- It needs quite a few countries to collaborate before you see the impact.
+
+It is a long standing myth (?) that the Scandinavian countries do exactly this. 
+Let's find out …
+
+You can do this with Cypher.
+
+It would get pretty hairy though. If you however reduce the problem to it's essence, what you want to do is find out if there are voting-communities that persist over time …
+
+I wonder if there are GDS algorithms that can determine communities …
