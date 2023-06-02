@@ -11,6 +11,8 @@ The native [LOAD CSV](https://neo4j.com/developer/guide-import-csv/) cypher comm
 
 2. Go to the [Neo4j AuraDB Managemnt Console](https://console.neo4j.io)
 
+![](images/01-aura_console.png)
+
 3. 
 
 <!---
