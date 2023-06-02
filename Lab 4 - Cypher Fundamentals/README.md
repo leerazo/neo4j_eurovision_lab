@@ -63,6 +63,7 @@ The approach then becomes:
 - Use another intermediate projection to filter based on the percentage (80%)
 - Project the result ordered by relevance 
 
+Copu the following query:
 
     MATCH (c:Country)<-[vote:VOTE_2006_JURY|VOTE_2006_PUBLIC]-()
     RETURN c.name, sum(vote.weight) as score
