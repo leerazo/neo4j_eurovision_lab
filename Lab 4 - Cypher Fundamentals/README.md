@@ -29,4 +29,10 @@ Filtering is done with WHERE (this statement does exactly the same)
 
 ![](images/03-query2_show_finland.png)
 
-Next sentence.
+### Using Patterns to Answer Questions
+Who won in 1975?
+
+    MATCH (c:Country)<-[vote:VOTE_1975_JURY|VOTE_1975_PUBLIC]-()RETURN c.name, sum(vote.weight) as scoreORDER BY score DESC LIMIT 10;
+
+The Netherlands (with Ding-a-Dong) did and you can check at https://eurovisionworld.com/eurovision/1975, the data is correct.
+Please take a moment to note down the positions of Finland, Sweden and Ireland (7, 8, 9), this is going to be useful in a bit.
