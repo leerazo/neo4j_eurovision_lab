@@ -27,11 +27,11 @@ The native [LOAD CSV](https://neo4j.com/developer/guide-import-csv/) cypher comm
 
 6. After the dump file has been uploaded it might take 2-5 minutes to process before the upload is complete. 
 
-![](images/04-upload_complete.png) 
+![](images/05-upload_complete.png) 
 
 6. The instance and the data is ready to when the status goes back to "Running"
 
-![](images/04-instance_running.png) 
+![](images/06-instance_running.png) 
 
 
 <!---
