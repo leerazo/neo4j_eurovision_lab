@@ -27,6 +27,6 @@ Filtering is done with WHERE (this statement does exactly the same)
     WHERE c.name = "Finland"
     RETURN c;
 
-![](images/03-query1_show_finland.png)
+![](images/03-query2_show_finland.png)
 
 Next sentence.
