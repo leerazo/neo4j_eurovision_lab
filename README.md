@@ -1,4 +1,4 @@
-# Hands-on Lab Neo4j on Google Cloud 
+# Neo4j on Google Cloud - Hands-on Lab
 Neo4j is the [leading graph database](https://db-engines.com/en/ranking/graph+dbms) vendor.  We’ve worked closely with Google Cloud engineering for years.  Our products, AuraDB and AuraDS are offered as managed services on Google Cloud.  Neo4j Enterprise Edition, which includes Graph Database, Graph Data Science and Bloom is offered in the [Google Cloud Marketplace](https://console.cloud.google.com/marketplace/browse?q=neo4j).
 
 In this hands on lab, you’ll get to learn about [Neo4j](https://neo4j.com/) on [Google Cloud](https://cloud.google.com/). You will configure and deploy an instance using [Aura](https://console.cloud.google.com/marketplace/product/endpoints/prod.n4gcp.neo4j.io) which is Neo4j's fully managed graph database offering. 
