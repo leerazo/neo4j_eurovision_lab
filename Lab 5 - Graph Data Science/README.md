@@ -58,4 +58,10 @@ Streaming the results for 1975
     RETURN gds.util.asNode(nodeId).name AS name, score
     ORDER BY score DESC, name ASC LIMIT 10;
 
-ttt
+Streaming the results for 1975
+
+
+Does anybody notice something strange about positions 7, 8 and 9?
+![](images/01-fin_swe_ire.png)
+
+
