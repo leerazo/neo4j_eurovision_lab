@@ -246,6 +246,8 @@ Next renove relationships
 
     MATCH p=()-[r:SIMILAR_TO]->() DELETE r
  
+Remove the year nodes
+ 
     UNWIND range(1975,2018,1) as year
     CALL {
         WITH year
@@ -254,6 +256,7 @@ Next renove relationships
         YIELD value RETURN count(value) as nodeDeleted
     } RETURN year1, nodeDeleted;
 
+Remove the detected communities
  
     UNWIND range(1975,2018,1) as year
     CALL {
