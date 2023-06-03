@@ -166,4 +166,69 @@ Modeling phase:
 
 ![](images/02-node_similarity.png)
 
-** Creating new nodes (Louvain communities per each year) **
+**Creating new nodes (Louvain communities per each year)**
+
+    UNWIND range(1975,2018,1) as year1
+    CALL {
+        WITH year1
+        CALL apoc.cypher.run("MATCH (c:Country) 
+            RETURN collect(distinct c.louvain"+year1+") as comms", {})
+        YIELD value
+        WITH year1, value.comms as yearCommunities
+        UNWIND yearCommunities as yC
+        CALL apoc.merge.node(["Year"+year1], {value: yC})
+        YIELD node
+        RETURN count(node) as nodeWritten1
+    } RETURN year1, nodeWritten1;
+
+Creating new relationships (from Country to Year Louvain Community)
+
+    UNWIND range(1975,2018,1) as year2
+    CALL {
+        WITH year2
+        CALL apoc.cypher.run("MATCH (c:Country) 
+      	    WHERE c.louvain"+year2+" IS NOT NULL 
+	    RETURN c as node, c.louvain"+year2+" as community", {})
+        YIELD value as c WITH year2, c
+        CALL apoc.cypher.run("MATCH (y:Year"+year2+") 
+	    WHERE y.value = "+c.community+" RETURN y as node", {})
+        YIELD value as y WITH year2, c, y
+        CALL apoc.create.relationship(c.node, "HAS_COMMUNITY", {}, y.node)
+        YIELD rel RETURN count(rel) as nodeWritten2
+    } RETURN year2, nodeWritten2;
+
+Creating the projection for Node Similarity
+
+    CALL gds.graph.project("eurosong_communities",
+        ['Country','Year1975', 'Year1976', 'Year1977', 'Year1978', 'Year1979',  'Year1980', 'Year1981', 'Year1982', 'Year1983', 'Year1984', 'Year1985', 'Year1986', 'Year1987', 'Year1988', 'Year1989', 'Year1990', 'Year1991', 'Year1992', 'Year1993', 'Year1994', 'Year1995', 'Year1996', 'Year1997', 'Year1998', 'Year1999', 'Year2000', 'Year2001', 'Year2002', 'Year2003', 'Year2004', 'Year2005', 'Year2006', 'Year2007', 'Year2008', 'Year2009', 'Year2010', 'Year2011', 'Year2012', 'Year2013', 'Year2014', 'Year2015', 'Year2016', 'Year2017', 'Year2018’],
+        "HAS_COMMUNITY"
+    ) YIELD graphName, nodeCount, relationshipCount
+    RETURN graphName, nodeCount, relationshipCount;
+
+Run Node Similarity
+
+    CALL gds.nodeSimilarity.write('eurosong_communities’, {
+        writeRelationshipType: 'SIMILAR_TO’,
+        writeProperty: 'score’,
+        similarityCutoff: 0.5
+    })
+    YIELD nodesCompared, relationshipsWritten
+
+Check the results
+
+    MATCH p=(:Country)-[r:SIMILAR_TO]->(:Country) RETURN p;
+
+#### Confirmed or Debunked? ####
+
+![](images/03-results.png)
+
+Yes, there is some collusion, but remember, you'd need quite the cluster to actually influence the results significantly. 
+And it would seem it's not only the 
+Scandinavian countries that have 
+that at the moment.
+
+Look at eastern countries too!
+
+### Clean-up ###
+
+rehfh
