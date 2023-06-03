@@ -47,3 +47,15 @@ Native projection VERSUS Cypher projection
 -  Cypher projection gives you full flexibility (you can even project things that aren't there)
 
 For our hands-on we'll go with Cypher projections, but do keep above in mind!
+
+Streaming the results for 1975
+
+    CALL gds.pageRank.stream("eurosong1975", {
+      maxIterations: 20,
+      dampingFactor: 0.85,
+      relationshipWeightProperty: "weight"
+    }) YIELD nodeId, score
+    RETURN gds.util.asNode(nodeId).name AS name, score
+    ORDER BY score DESC, name ASC LIMIT 10;
+
+ttt
