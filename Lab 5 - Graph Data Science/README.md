@@ -134,3 +134,25 @@ There are three main modes (ignoring stats and estimate) to run an algorithm
 - **write** - modifies the original graph, which can be very useful if you want to combine analytics with real time use cases
 
 - **mutate** - modifies the in-memory projection, which is typically done when you have a chain of algorithms where one has to feed into the next
+
+### write, mutate and nodeProperties.write ###
+
+Write mode lets us write back the results to the database.
+CALL gds.wcc.write …
+
+Instead of write mode, here we already used mutate, so we could write back the new properties from the projection to the database.
+
+    UNWIND range(1975,2018,1) as year
+    CALL {
+    WITH year
+    CALL gds.graph.nodeProperties.write("eurosong"+year,
+                                        ['louvain'+year], ['Country']) 
+    YIELD propertiesWritten RETURN propertiesWritten
+    } RETURN year, propertiesWritten
+
+For each Country, for each Year, we have its community.
+Now, we need to understand if some Countries shared the same communities over the years. 
+
+Possible approaches:
+- Embeddings + KNN
+- Node Similarity
