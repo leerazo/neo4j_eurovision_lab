@@ -88,5 +88,49 @@ What were the voting communities in 1975?
 
 Nice, but without looking over all the years there's no way to bust the Scandinavian myth …
 
+Project the remaining years without televoting
 
+    UNWIND range(1976,2015,1) as year
+    CALL {
+    WITH year
+    CALL gds.graph.project.cypher("eurosong" + year,
+        "MATCH (c:Country) WHERE EXISTS ((c)-[:VOTE_" + year + "_JURY]-()) RETURN id(c) as id, labels(c) as labels",
+        "MATCH (s:Country)-[r:VOTE_" + year + "_JURY]->(t:Country) RETURN id(s) as source, id(t) as target, type(r) as type, r.weight as weight"
+    ) YIELD graphName  
+    RETURN graphName
+    }
+    RETURN year, graphName;
 
+Project the remaining years with televoting
+
+    UNWIND range(2016,2018,1) as year
+    CALL {
+    WITH year
+    CALL gds.graph.project.cypher("eurosong" + year,
+        "MATCH (c:Country) WHERE EXISTS ((c)-[:VOTE_" + year + "_JURY]-()) RETURN id(c) as id, labels(c) as labels",
+        "MATCH (s:Country)-[r:VOTE_" + year + "_JURY|VOTE_" + year + "_PUBLIC]->(t:Country) RETURN id(s) as source, id(t) as target, type(r) as type, r.weight as weight"
+    ) YIELD graphName  
+    RETURN graphName
+    }
+    RETURN year, graphName;
+
+Run Louvain in bulk and mutate the in-memory projection
+
+    UNWIND range(1975,2018,1) as year
+    CALL {
+    WITH year
+    CALL gds.louvain.mutate("eurosong" + year, {
+        relationshipWeightProperty: "weight",
+        mutateProperty: "louvain" + year
+    }) YIELD nodePropertiesWritten
+    RETURN nodePropertiesWritten
+    }
+    RETURN year, nodePropertiesWritten;
+
+There are three main modes (ignoring stats and estimate) to run an algorithm
+
+- **stream** - streams the results and is typically either used as a test run (with visual inspection of the results) or when you want to use the results outside of Neo4j (in a machine learning pipeline for example)
+
+- **write** - modifies the original graph, which can be very useful if you want to combine analytics with real time use cases
+
+- **mutate** - modifies the in-memory projection, which is typically done when you have a chain of algorithms where one has to feed into the next
