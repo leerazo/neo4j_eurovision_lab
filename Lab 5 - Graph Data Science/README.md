@@ -62,6 +62,29 @@ Streaming the results for 1975
 
 
 Does anybody notice something strange about positions 7, 8 and 9?
+
 ![](images/01-fin_swe_ire.png)
+
+**A bit of a rant**
+
+Why aren't Finland, Ireland and Sweden in the correct order? Is pageranking giving us information that a plain score can not? Yes and no.
+
+The way pageranking works is that incoming votes are only part of the story. A vote gets more importance if it comes from a page that itself has a high score. Ireland got votes from The Netherlands. The others did not.
+
+The lesson here is that you
+- Need to understand your data
+- Need to understand the algorithms 
+
+Going back to the Scandinavian myth…
+What were the voting communities in 1975?
+
+    CALL gds.louvain.stream("eurosong1975", {
+     relationshipWeightProperty: "weight"
+    }) YIELD nodeId, communityId
+    RETURN collect(gds.util.asNode(nodeId).name) AS members, communityId
+    ORDER BY communityId DESC
+
+Nice, but without looking over all the years there's no way to bust the Scandinavian myth …
+
 
 
