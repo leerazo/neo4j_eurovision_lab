@@ -24,7 +24,7 @@ If you have a Google Cloud account with permissions that allow you to invoke Neo
     * Deploying Neo4j AuraDS Professional
 * [Lab 2 - Connect to Neo4j](Lab%202%20-%20Connect%20to%20Neo4j/README.md) (10 min)
     * Neo4j Workspace
-* [Lab 3 - Load Database into Neo4j AuraDS](neo4j_eurovision_lab/Lab 3 - Load Database into Neo4j AuraDS/README.md) (15 min)
+* [Lab 3 - Load Database into Neo4j AuraDS](Lab 3 - Load Database into Neo4j AuraDS/README.md) (15 min)
 
 Lab%203%20-%20Moving%20Data/README.md) (15 min)
     * A Day of Data
