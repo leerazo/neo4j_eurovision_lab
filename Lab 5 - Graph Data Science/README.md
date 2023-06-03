@@ -15,7 +15,8 @@ In this lab we will focus on 2. and 4. (to save time and reduce complexity) but 
 This question is asking about the importance of countries in our voting graph. That's a centrality problem and the best known algorithm for it is pageranking so let's apply that!
 Project the relevant data into the in-memory workspace
 
-Project the relevant data into the in-memory workspace
+Project the relevant data into the in-memory workspace.
+
     CALL gds.graph.project("eurosong1975",
       "Country",
       "VOTE_1975_JURY",
