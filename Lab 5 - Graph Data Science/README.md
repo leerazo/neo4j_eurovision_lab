@@ -13,3 +13,15 @@ In this lab we will focus on 2. and 4. (to save time and reduce complexity) but 
 **Who won in 1975?**
 
 This question is asking about the importance of countries in our voting graph. That's a centrality problem and the best known algorithm for it is pageranking so let's apply that!
+Project the relevant data into the in-memory workspace
+
+Project the relevant data into the in-memory workspace
+    CALL gds.graph.project("eurosong1975",
+      "Country",
+      "VOTE_1975_JURY",
+      { relationshipProperties: "weight" }
+    ) YIELD graphName, nodeCount, relationshipCount
+    RETURN graphName, nodeCount, relationshipCount;
+
+Something is not quite right, check https://eurovisionworld.com/eurovision/1975 again, how many countries participated? 
+
