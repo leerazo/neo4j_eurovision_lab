@@ -150,9 +150,20 @@ Instead of write mode, here we already used mutate, so we could write back the n
     YIELD propertiesWritten RETURN propertiesWritten
     } RETURN year, propertiesWritten
 
+**What’s missing to debunk the myth?**
+
 For each Country, for each Year, we have its community.
 Now, we need to understand if some Countries shared the same communities over the years. 
 
 Possible approaches:
 - Embeddings + KNN
 - Node Similarity
+
+**Node Similarity approach**
+
+We have to transform the (variable number of) properties in relationships.
+Modeling phase:
+
+![](images/02-node_similarity.png)
+
+** Creating new nodes (Louvain communities per each year) **
