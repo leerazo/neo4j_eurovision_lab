@@ -26,3 +26,24 @@ Project the relevant data into the in-memory workspace.
 
 Something is not quite right, check https://eurovisionworld.com/eurovision/1975 again, how many countries participated? 
 
+Show an overview of the projections
+    CALL gds.graph.list();
+
+Clean up the projection
+    CALL gds.graph.drop("eurosong1975");
+
+And try it in a different way …
+
+    CALL gds.graph.project.cypher("eurosong1975",
+      "MATCH (c:Country) WHERE EXISTS ((c)-[:VOTE_1975_JURY]-()) RETURN id(c) as id, labels(c) as labels",
+      "MATCH (s:Country)-[r:VOTE_1975_JURY]->(t:Country) RETURN id(s) as source, id(t) as target, type(r) as type, r.weight as weight"
+    ) YIELD graphName, nodeCount, relationshipCount
+    RETURN graphName, nodeCount, relationshipCount;
+
+Native projection VERSUS Cypher projection
+-  Native projection is very efficient, scales to huge graphs
+-  Native projection requires that your original graph is completely tailored to the problems
+-  Cypher projection is less efficient
+-  Cypher projection gives you full flexibility (you can even project things that aren't there)
+
+For our hands-on we'll go with Cypher projections, but do keep above in mind!
