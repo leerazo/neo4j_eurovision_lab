@@ -75,6 +75,8 @@ The lesson here is that you
 - Need to understand your data
 - Need to understand the algorithms 
 
+**Let's up the ante**
+
 Going back to the Scandinavian myth…
 What were the voting communities in 1975?
 
