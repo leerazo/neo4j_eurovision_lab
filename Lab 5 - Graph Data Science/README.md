@@ -10,6 +10,6 @@ A typical run of a graph algorithm has the following steps:
 
 In this lab we will focus on 2. and 4. (to save time and reduce complexity) but please do not forget the other steps once you are doing this on your own. 
 
-*Who won in 1975?*
+**Who won in 1975?**
 
 This question is asking about the importance of countries in our voting graph. That's a centrality problem and the best known algorithm for it is pageranking so let's apply that!
