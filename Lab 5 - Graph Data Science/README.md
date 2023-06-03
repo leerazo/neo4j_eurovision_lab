@@ -245,7 +245,7 @@ First delete the projections from memory
 Next renove relationships
 
     MATCH p=()-[r:SIMILAR_TO]->() DELETE r
-
+ 
     UNWIND range(1975,2018,1) as year
     CALL {
         WITH year
@@ -254,7 +254,7 @@ Next renove relationships
         YIELD value RETURN count(value) as nodeDeleted
     } RETURN year1, nodeDeleted;
 
-
+ 
     UNWIND range(1975,2018,1) as year
     CALL {
         WITH year
